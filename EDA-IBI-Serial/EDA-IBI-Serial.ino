@@ -46,6 +46,11 @@ void setup() {
   pinMode(2, INPUT);
 
   analogReference(EXTERNAL);
+
+  Serial.print("#");
+  Serial.println("----- LOG BEGIN EDA-IBI-SERIAL (sep=tab, col=6, label=EDAIBISerial) -----");
+  Serial.print("#");
+  Serial.println("Millis\tEDA\tIBI\tRawPulse\tPressure\tButton");
 }
 
 void loop() {
