@@ -57,7 +57,7 @@ void loop() {
 
   ReadSensors(); //Have the Arduino read it's sensors etc.
 
-  SerialInput(); //Check if Unity has sent anything
+  //SerialInput(); //Check if Unity has sent anything
 
   SerialOutput(); //Check if it is time to send data to Unity
 
@@ -73,6 +73,7 @@ void ReadSensors()
   checkPulseSensor();
 }
 
+/* SERIALINPUT DISABLED FOR NOW
 const int inputCount = 4; //This must match the amount of bytes you send from Unity!
 byte inputBuffer[inputCount];
 void SerialInput()
@@ -94,7 +95,7 @@ void SerialInput()
      //Currently no checks for desync (no start/end flags or package size checks)
      //This should be implemented to make the imp. more robust
 }
-
+*/
 
 
 void SerialOutput() {
