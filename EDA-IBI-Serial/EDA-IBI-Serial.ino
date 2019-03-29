@@ -3,7 +3,7 @@ int EDA = 0;              // Raw EDA measurement
 int IBI = 600;            // Time interval between heart beats
 int pressure = 0;         // Raw Pressure Sensor Measurement
 int rawPulseSensor = 0;   // Raw reading from the pulse sensor pin (can be used for plotting the pulse)
-
+int testLED = 10;
 //Sensor Variables
 int EDAPin = A0;
 int PulsePin = A1;         // Pulse Sensor purple wire connected to analog pin 0
@@ -32,6 +32,7 @@ bool Resetting = true;
 
 void setup() {
   Serial.begin(115200);
+  
 
 //Example input/output pins
   pinMode(13, OUTPUT);
@@ -51,6 +52,9 @@ void setup() {
   Serial.println("----- LOG BEGIN EDA-IBI-SERIAL (sep=tab, col=6, label=EDAIBISerial) -----");
   Serial.print("#");
   Serial.println("Millis\tEDA\tIBI\tRawPulse\tPressure\tButton");
+  digitalWrite(testLED, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(500);                       // wait for a second
+  digitalWrite(testLED, LOW);    // turn the LED off by making the voltage LOW
 }
 
 void loop() {
