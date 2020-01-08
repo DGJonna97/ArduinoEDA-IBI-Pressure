@@ -1,14 +1,16 @@
+//Sensor Variables
+int EDAPin = A2;
+int PulsePin = A0;         // Pulse Sensor purple wire connected to analog pin 0
+int pressurePin = A1;
+int buttonPin = 12;
+
 //Output variables
 int EDA = 0;              // Raw EDA measurement
 int IBI = 600;            // Time interval between heart beats
 int pressure = 0;         // Raw Pressure Sensor Measurement
 int rawPulseSensor = 0;   // Raw reading from the pulse sensor pin (can be used for plotting the pulse)
-int testLED = 10;
-//Sensor Variables
-int EDAPin = A0;
-int PulsePin = A1;         // Pulse Sensor purple wire connected to analog pin 0
-int pressurePin = A2;
-int buttonPin = 2;
+int testLED = 11;
+
 
 int IBISign = 1;           // used to change the sign of the IBI, to indicate a new value (in case two succeeding values are the same)
 boolean Pulse = false;     // "True" when a heartbeat is detected. (can be used for for blinking an LED everytime a heartbeat is detected) 
