@@ -54,12 +54,10 @@ void setup() {
 }
 
 void loop() {
-  if (testRunning == false) {
-    if(digitalRead(buttonPin) == HIGH) {
-      testRunning = true;
-      SendHeader();
-    }
-  } else if (testRunning) {
+  if(digitalRead(buttonPin) == HIGH) {
+    testRunning = true;
+    SendHeader();
+  } if (testRunning) {
 
   ReadSensors(); //Have the Arduino read it's sensors etc.
 
