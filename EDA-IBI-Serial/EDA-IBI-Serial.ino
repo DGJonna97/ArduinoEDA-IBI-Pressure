@@ -31,6 +31,7 @@ int Signal;                               // holds the incoming raw data
 unsigned long lastBeatTime = 0;           // Store last millis a pulse was detected
 unsigned long TimeoutInterval = 1500UL;
 bool Resetting = true;
+bool testRunning = false;
 
 void setup() {
   Serial.begin(115200);
@@ -50,16 +51,15 @@ void setup() {
 
   analogReference(EXTERNAL);
 
-  Serial.print("#");
-  Serial.println("----- LOG BEGIN EDA-IBI-SERIAL (sep=tab, col=6, label=EDAIBISerial) -----");
-  Serial.print("#");
-  Serial.println("Millis\tEDA\tIBI\tRawPulse\tPressure\tButton");
-  digitalWrite(testLED, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(500);                       // wait for a second
-  digitalWrite(testLED, LOW);    // turn the LED off by making the voltage LOW
 }
 
 void loop() {
+  if (testRunning == false) {
+    if(digitalRead(buttonPin) == HIGH) {
+      testRunning = true;
+      SendHeader();
+    }
+  } else if (testRunning) {
 
   ReadSensors(); //Have the Arduino read it's sensors etc.
 
@@ -67,7 +67,19 @@ void loop() {
 
   SerialOutput(); //Check if it is time to send data to Unity
 
-  digitalWrite(13,Pulse); // Light up the LED on Pin 13 when a pulse is detected
+  digitalWrite(testLED,Pulse); // Light up the LED on Pin 13 when a pulse is detected
+  }
+}
+
+void SendHeader()
+{
+  Serial.print("#");
+  Serial.println("----- LOG BEGIN EDA-IBI-SERIAL (sep=tab, col=6, label=EDAIBISerial) -----");
+  Serial.print("#");
+  Serial.println("Millis\tEDA\tIBI\tRawPulse\tPressure\tButton");
+  digitalWrite(testLED, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(500);                       // wait for a second
+  digitalWrite(testLED, LOW);    // turn the LED off by making the voltage LOW
 }
 
 void ReadSensors()
