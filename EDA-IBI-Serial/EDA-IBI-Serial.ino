@@ -170,7 +170,7 @@ void checkPulseSensor(){
   }
     
   // Look for a heart beat
-  if (N > 400) {                                            // avoid heart rates higher than 60000/400 = 150 bpm. Decrease the value to detect higher bpm
+  if (N > 333) {                                            // avoid heart rates higher than 60000/333 = 180 bpm. Decrease the value to detect higher bpm
     if ( (Signal > Threshold) && !Pulse && !Resetting) {    // Signal surges up in value every time there is a pulse
       Pulse = true;                                         // set the Pulse flag when we think there is a pulse
       IBI = N;                                              // Set inter-beat interval
